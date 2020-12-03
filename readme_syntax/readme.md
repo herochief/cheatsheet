@@ -72,7 +72,7 @@ She is a girl.
 <!-- ## COMMENTING------------------------- -->
 ## <a name="comment"> Commenting </a>
 
-Although Readme are meant to explain everything, we like to have some comments while creating the readme file or insert some ester eggs.
+Although Readme are meant to explain everything, we like to have some comments while creating the readme file or insert some easter eggs.
 
 **First Way**: Using HTML commenting syntax of `<!-- text that will not be loaded or seen -->`
 
