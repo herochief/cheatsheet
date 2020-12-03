@@ -23,11 +23,11 @@ To begin we need to start with an image to run to initialise the container.
 
 2. Pull image from docker hub: 
 
-> `docker pull <username>/<image>:<tagName>`
+> `docker pull <username>/<imageName>:<tagName>`
 
 3. Pull and run image: 
 
-> `docker run -rm -p 5001:5001 <username>/<image>:<tagName>`
+> `docker run -rm -p 5001:5001 <username>/<imageName>:<tagName>`
 
 
 ### Pushing to the Docker Hub 
@@ -35,11 +35,11 @@ To begin we need to start with an image to run to initialise the container.
 If we made changes to the image (hence a new image). We want to update the one on docker hub so that next time the image pulled would be the latest version.
 1. Tag a version for the image (For our case, it is the Latest version): 
 
-> `docker tag <imageID> <username>/<docke_page>:latest`
+> `docker tag <imageID> <username>/<imageName>:latest`
 
 2. Push the new image to docker hub: 
 
-> `docker push <username>/<docke_page>`
+> `docker push <username>/<imageName>`
 
 -------------------------------------------------------
 <!-- <end> Starting up  -->
