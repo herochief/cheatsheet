@@ -19,15 +19,15 @@ To begin we need to start with an image to run to initialise the container.
 To begin we need to start with an image to run to initialise the container.
 1. Login into the Docker account: 
 
-> `To login to docker account: docker login –username:khaihongkh`
+> `To login to docker account: docker login –username:<username>`
 
 2. Pull image from docker hub: 
 
-> `docker pull khaihong/scriptsdocker:<tagName>`
+> `docker pull <username>/<image>:<tagName>`
 
 3. Pull and run image: 
 
-> `docker run -rm -p 5001:5001 khaihongkh/scriptsproject:<tagName>`
+> `docker run -rm -p 5001:5001 <username>/<image>:<tagName>`
 
 
 ### Pushing to the Docker Hub 
@@ -35,11 +35,11 @@ To begin we need to start with an image to run to initialise the container.
 If we made changes to the image (hence a new image). We want to update the one on docker hub so that next time the image pulled would be the latest version.
 1. Tag a version for the image (For our case, it is the Latest version): 
 
-> `docker tag <imageID> khaihongkh/scriptsdocker:latest`
+> `docker tag <imageID> <username>/<docke_page>:latest`
 
 2. Push the new image to docker hub: 
 
-> `docker push khaihong/scriptsdocker`
+> `docker push <username>/<docke_page>`
 
 -------------------------------------------------------
 <!-- <end> Starting up  -->
@@ -190,7 +190,7 @@ Clean these components: `docker system prune` OR `docker image prune`
 
 
 
-<!-- loveaaaa 
+<!-- 
 Basic Command
 docker container ls -a
 docker image ls –a
