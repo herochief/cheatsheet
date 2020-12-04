@@ -63,7 +63,7 @@ You can also use this command to switch to other branches.
 
 2. Check if your branch is made:
 
-> `$ git branch" `
+> `$ git branch `
 
 ---------------------------------------------------------
 
