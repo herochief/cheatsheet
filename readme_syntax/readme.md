@@ -46,7 +46,7 @@ If you wish to create a line to partition the page. Spam ( --- ) or ( *** ) or (
 To create a new paragraph for typing, have a line gap between sentences or double enter button
 
 ### Down one line
-The Issue with just `enter` once is that the sentance is still taken to be the same sentance. \
+The Issue with just `enter` once is that the sentance is still taken to be the same sentance as the on directly above. \
 Another way to break a sentence with no gap is to use "` \`"
 
 eg. Without `\` 
