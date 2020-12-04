@@ -253,7 +253,7 @@ syntax: `[The text to click on](Url)`
 ## <a name="book"> Bookmark </a>
 
 
-Say your readme is very long and hence you need a guide to move you to different parts quickly. One way is to create internal links is through headers in the file. When someone clicks the link, it will take you to that part of the page.
+Say your readme is very long and hence you need a guide to move you to different parts quickly. One way is to create internal links to headers in the file. When someone clicks the link, it will take you to that part of the page with that header.
 
 There are 2 parts to the process.
 
