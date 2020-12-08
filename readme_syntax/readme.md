@@ -1,5 +1,15 @@
 # HOW TO USE MARKDOWN SYNTAX
 
+## Introduction
+
+This is a cheatsheet to use some Markdown syntax. It comes with a simple description and syntax from using it. \ 
+If you did not know already, its entire tutorial is written in Markdown. \
+In gitHub, if you create a "readme.md" file and it contents as Markdown syntax, the repository page will load the file upon loading the page as seen here.
+I hope you find it useful and enjoy.
+
+
+-----------------------------------------------
+
 ## CONTENTS
 
 Contents | Contents | Contents
