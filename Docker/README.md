@@ -2,6 +2,8 @@
 
 ## Content
 1. [Starting Up](#STARTING "How to pull, push and start an image")
+1. [Dockerfile](#DOCKERFILE "How to create a new image")
+1. [Docker Compose](#DOCKERCOMPOSE "How to connect individual containers")
 2. [Potential Issues](#ISSUES "Too many issues, what do i do?")
 3. [Basic Commands](#COMMANDS "There is more that meets the eyes")
 4. [STOP and REMOVE](#STOP_REMOVE "STOP IT NOW")
@@ -44,6 +46,189 @@ If we made changes to the image (hence a new image). We want to update the one o
 -------------------------------------------------------
 <!-- <end> Starting up  -->
 
+
+
+<!-- <start> Dockerfile  -->
+## <a name="DOCKERFILE">  Dockerfile  </a>
+
+What is a Dockerfile: \
+Lets start at the end. You end with a running container. In order to create the container you need an image. This image is portable and can be shared with others, furthermore it is secure as each image is unique. However, the image might not be to your needs. A dockerfile will create a new image with added functions from a base image.
+
+Eg. Your basic image may only run python. BUT you need other libraries and extra applications. A dockerfile must be made and run to create a new image with all this functions.
+
+Why do we use dockerfile instead of just updating the libraries in the running container: \
+You put it very simply (but not always the case), all the data input and created in the container is only temporary. Hence, you need to create an image with the libraries beforehand, which is using the dockerfile.
+
+
+**1)Create a docker file:**
+
+First to create a dockerfile is literally create a file with the name `Dockerfile`. **NO** extensions added. \
+When running command later, the command will automatically look for the `Dockerfile` file. (like `$ make` will build th `makefile`)
+
+To be on the safe side, lets be case sensitive. ~~dockerfile~~ Dockerfile
+
+> `$ touch Dockerfile`
+
+
+**2) Contents for the dockerfile:**
+
+Now the dockerfile needs some contents to know what to run. Open your dockerfile with any text editor
+
+> `$ gedit Dockerfile`
+
+        FROM alpine:3.4 
+        MAINTAINER <name> <email>
+
+        RUN apt-get update && \
+            install gedit \
+            vim
+
+        RUN pip install numpy
+    
+You start with the a base image (in this case is the alpine:3.4) and new we will add gedit, vim and install numpy for python.
+
+
+**3) Creating the image:**
+
+Now is to build the image. Note that you need a name and version in the format of `<name>:<version>`
+
+> `$ docker build -t <name>:<version> <path/to/dockerfile>` \
+eg `$ docker build -t Hero_image:001 .` The fullstop is to say current folder.
+
+**4) Extra notes**
+
+You have now created a new image. \
+This is merely a basic example on using Dockerfile. \
+There are more commands that can be used in the docker file, visit their [site](https://docs.docker.com/engine/reference/builder/) from more details. \
+If you want more in-depth but still basic tutorial, you can try this [video](https://www.youtube.com/watch?v=6Er8MAvTWlI&t=806s) by [takacsmark](https://www.youtube.com/channel/UCNaxXS9VOYKyVbT--ctbHEA).
+
+
+
+--------------------------------------------------
+<!-- <end> Dockerfile -->
+
+
+
+<!-- <start> Docker Compose -->
+## <a name="DOCKERCOMPOSE">  Docker Compose  </a>
+
+What is the docker compose function for: \
+For the previous times, we have beening working with individual images and containers, Each image and container are isolated from local system. Instead of having an entire application on an image, it would be wiser to separate the entire application into modules , especially if the each part might have their own libraries. 
+
+However, if each container is isolated, how do we connect them each other. That is where docker compose comes in. \
+Docker Compose allows (or tells) several container to run. Basically running multi-container. 
+
+I will simplify and go through the docker compose examples from the main docekrsite.
+
+### 1) Setup the necessary files.
+
+We need the files for our project first. For the sake of our example will need 3 files. (All in the same directory)
+
+FILES   | Description 
+------  | -------
+app.py          | A python file that will be the basis of our example project.
+requirements.txt | Libraries that are required for the app.py to run.
+Dockerfile | To create the image with the app.py. requirements and the necessary libraries.
+
+> `touch app.py requirements.txt Dockerfile`
+
+Next are the contents of the files
+
+#### i) app.py
+```
+import time
+
+import redis
+from flask import Flask
+
+app = Flask(__name__)
+cache = redis.Redis(host='redis', port=6379)
+
+def get_hit_count():
+    retries = 5
+    while True:
+        try:
+            return cache.incr('hits')
+        except redis.exceptions.ConnectionError as exc:
+            if retries == 0:
+                raise exc
+            retries -= 1
+            time.sleep(0.5)
+
+@app.route('/')
+def hello():
+    count = get_hit_count()
+    return 'Hello World! I have been seen {} times.\n'.format(count)
+
+```
+
+#### ii) requirements.txt
+```
+flask
+redis
+```
+
+#### iii) Dockerfile
+```
+FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run"]
+```
+Do not worry about the details as this is merely an example to run.
+
+### 2) Create the Compose file
+
+Like the dockfile for images, Compose files to tell the docker which images to run and how to run.
+
+> `docker-compose.yml`
+```
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+  redis:
+    image: "redis:alpine"
+
+```
+`services` : Defines the section for the services to be defined. \
+`web` and `redis` : This services names are abitary (like a variable), it does not need to be the same as any image or container name. Good to have the name be easy to recognise application or function.
+
+`web`: Define the service for our web function application and the environment of it. 
+* `build` defines the dockerfile to built the image to run later. 
+* `ports` is the port number to open.
+
+`redis` :  Defines image for storing data. This directly from the dockerhub. 
+* `image` defines the redis image to use.
+
+**Note**: If you have not notice, the compose file is written to run 2 images. 
+1. Web service: create the image from the docekrfile and run it.
+2. redis service: redis image
+
+### 3) Build and run your app with Compose
+
+Let run our Compose file
+> `$ docker-compose up`
+
+To test if it is working, go to http://localhost:5000/
+
+### More details
+
+For more details on docker compose, you can visit the [docker site](https://docs.docker.com/compose/gettingstarted/). \
+For a live example you can follow this [video](https://www.youtube.com/watch?v=4EqysCR3mjo&t=1255s) by [takacsmark](https://www.youtube.com/channel/UCNaxXS9VOYKyVbT--ctbHEA).
+
+On a side Note: Docker compose only allows you to use within the local machine. How about across several servers. For that, you need to read up on [docker swarm](https://www.youtube.com/watch?v=3-7gZS4ePak).
+
+<!-- <end> Docker Compose -->
+------------------------------------------------
 
 
 
@@ -214,3 +399,6 @@ Flag
 
 
 -->
+
+
+<
