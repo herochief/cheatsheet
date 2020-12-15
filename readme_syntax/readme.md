@@ -7,6 +7,7 @@ If you did not know already, its entire tutorial is written in Markdown. \
 In gitHub, if you create a "readme.md" file and it contents as Markdown syntax, the repository page will load the file upon loading the page as seen here. \
 I hope you find it useful and enjoy.
 
+As for the format of this tutorial, I will try to Show how it looks loaded with markdown programs followed by the exact syntax (code) used for it. 
 
 -----------------------------------------------
 
