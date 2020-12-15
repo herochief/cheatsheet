@@ -245,6 +245,23 @@ OR
 
 
 ```
+You can use `:` to indicate the position of the elements for each column.
+
+Column 1| Column 2 | Column 3
+--------:|:--------:|:--------
+left 11| Middle 12 | Right 32
+left 21| Middle 22 | Right 32
+left 31| Middle 32 | Right 32
+
+```
+Column 1| Column 2 | Column 3
+--------:|:--------:|:--------
+left 11| Middle 12 | Right 32
+left 21| Middle 22 | Right 32
+left 31| Middle 32 | Right 32
+```
+
+
 
 -----------------------------------------------------------
 
