@@ -2,8 +2,9 @@
 
 ## Installing CUDA
 
-1. install \
-```$ sudo apt update
+1. Install
+```
+$ sudo apt update
 $ sudo apt install nvidia-cuda-toolkit
 ```
 2. Check version \
