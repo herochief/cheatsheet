@@ -7,5 +7,5 @@
 $ sudo apt update
 $ sudo apt install nvidia-cuda-toolkit
 ```
-2. Check version
+2. Check version \
 `$ nvcc --version`
