@@ -23,7 +23,7 @@ $ sudo apt install nvidia-cuda-toolkit
 
 4. Search for which version Nvidia-driver you need: \
 `apt search nvidia-driver` \
-Usually follows your ubuntu version
+Usually follows your ubuntu version \
 Check Ubuntu version: `lsb_release -a`
 
 5. Install the driver: \
