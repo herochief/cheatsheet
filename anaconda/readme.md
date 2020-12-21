@@ -52,7 +52,7 @@ url: https://pytorch.org/
 
 2) Select the parameters
 
-3) follow the command given. \ 
+3) follow the command given. \
 usually: `conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch`
 
 -------------------------------------------------------------
