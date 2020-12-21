@@ -23,7 +23,7 @@ Do check the version you want to install
 
 --------------------------------------------------------------
 
-## Creating an new Env
+## Creating a new Env
 
 1) Check which env exist before:
 > `conda info --envs`
