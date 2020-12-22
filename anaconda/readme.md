@@ -9,7 +9,7 @@
 > `apt install wget`
 
 3) create a temperary folder:
-> `mkdir tmp`
+> `mkdir tmp` \
 > `cd tmp`
 
 4) Download the bash file for anaconda:
