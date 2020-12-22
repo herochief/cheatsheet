@@ -13,7 +13,7 @@
 > `cd tmp`
 
 4) Download the bash file for anaconda:
-> `wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh`
+> `wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh` \
 Do check the version you want to install
 
 5) Bash the .sh file:
