@@ -42,3 +42,11 @@ It might be something to do with the secure boot. Restart you computer, go into 
 Go in bios setup. Secure boot. disable secure boot. \
 Save and Restart.
 
+# Extra
+
+### Sudden irregular and increase Fan Speed
+
+My Computer fan (i think) started to have random and sudden outburst of speeding up. \
+I Reinstalled the driver and went away for now. 
+
+
