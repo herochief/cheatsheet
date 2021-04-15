@@ -47,6 +47,10 @@ Save and Restart.
 ### Sudden irregular and increase Fan Speed
 
 My Computer fan (i think) started to have random and sudden outburst of speeding up. \
-I Reinstalled the driver and went away for now. 
+I Reinstalled the driver and it went away for now.
+
+Observations: I do not know if its related but I will state it anyway.
+- Before restarting my computer could not detect my wired headphones.
+- Upon shutting down, it went to the terminal stating: `systemd-shutdown[1]: Waiting for process: modprobe`
 
 
