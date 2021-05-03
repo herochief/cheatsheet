@@ -53,4 +53,46 @@ Observations: I do not know if its related but I will state it anyway.
 - Before restarting my computer could not detect my wired headphones.
 - Upon shutting down, it went to the terminal stating: `systemd-shutdown[1]: Waiting for process: modprobe`
 
+-------
+
+## Installing CUDA from nvidia site:
+
+
+
+1. Go to the site to find the file you need for your system: \
+https://developer.nvidia.com/cuda-downloads
+
+2. A list of commands will be given:
+```
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+
+sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+
+wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda-repo-ubuntu2004-11-3-local_11.3.0-465.19.01-1_amd64.deb
+
+sudo dpkg -i cuda-repo-ubuntu2004-11-3-local_11.3.0-465.19.01-1_amd64.deb
+
+sudo apt-key add /var/cuda-repo-ubuntu2004-11-3-local/7fa2af80.pub
+
+sudo apt-get update
+
+sudo apt-get -y install cuda
+```
+note: the files with be saved to your usr/local/cuda
+
+3. errors
+one of the error that you do not have all the dependencies. It could be some were based on dependencies from the old cuda installment. \
+So delete the old cuda before install
+
+```
+1. purge the previous nvidia:
+`sudo apt-get purge nvidia-*`
+
+2. Update apt-get:
+`sudo apt-get update`
+
+3. Remove leftovers:
+`sudo apt-get autoremove`
+```
+
 
