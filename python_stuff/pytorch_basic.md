@@ -1,4 +1,4 @@
-# pytorch Basics
+# Pytorch Basics
 
 # starting
 
